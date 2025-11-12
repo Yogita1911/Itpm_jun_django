@@ -1,7 +1,31 @@
-<body>
-   {% for s in Student %}
-     <li> {{s.Name}}:{{s.Marks}}:{{s.Subject}}
-   {% endfor %}    
+ <h2>Student List</h2>
+<a href="{% url 'add_student' %}">Add New Student</a><br><br>
 
-
-</body>    
+<table border="2">
+  <tr>
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th>Marks</th>
+    <th>Subject</th>
+    <th>Fees</th>
+    <th>Actions</th>
+    
+  </tr>
+  {% for s in Student %}
+  <tr>
+    <td>{{ s.Role_Number }}</td>
+    <td>{{ s.Name }}</td>
+    <td>{{ s.Address }}</td>
+    <td>{{ s.Email }}</td>
+    <td>{{ s.Marks }}</td>
+    <td>{{ s.Subject }}</td>
+    <td>{{s.Fees}}</td>
+    <td>
+      <a href="{% url 'edit_student' s.Role_Number %}">Edit</a> |
+      <a href="{% url 'delete_student' s.Role_Number %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
